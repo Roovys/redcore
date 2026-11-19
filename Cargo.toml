@@ -1,0 +1,16 @@
+[package]
+name = "redcore-gpu"
+version = "0.1.0"
+edition = "2021"
+license = "GPL-3.0"
+description = "Zero-bloat, open-source AMD Radeon control panel and crash-safe tuning daemon built on ADLX."
+
+[dependencies]
+# Core runtime loads amdadlx64.dll dynamically via pure Rust FFI (zero C++ runtime bloat).
+# Planned v1.0 crates: slint, serde, toml
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+strip = true
